@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Jasmine Spec Runner</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.3.1/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.3.1/jasmine.css">
+
+  <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="app/jquery.js"></script>
+  <script type="text/javascript" src="app/fill_fields.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/fill_fields_spec.js"></script>
+
+  <script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      var htmlReporter = new jasmine.HtmlReporter();
+
+      jasmineEnv.addReporter(htmlReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+      }
+
+    })();
+  </script>
+
+</head>
+
+<body>
+
+  <form class="form-horizontal" style="display: none;">
+    <div class="control-group">
+      <label class="control-label" for="email">Email</label>
+      <div class="controls">
+        <input type="text" id="email" placeholder="Email" class="email" required>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="age">Age</label>
+      <div class="controls">
+        <input type="text" id="age" placeholder="Age" class="int" required>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="data">Date</label>
+      <div class="controls">
+        <input type="text" id="date" placeholder="Data" class="date" required>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="text">Text</label>
+      <div class="controls">
+        <textarea id="text" placeholder="Text" required></textarea>
+      </div>
+    </div>
+  </form>
+
+</body>
+</html>
